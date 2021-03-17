@@ -1,0 +1,89 @@
+.regContainer, .loginContainer{
+ margin-top:5vh;
+  height:100%;
+  width:100%;
+}
+
+.logForm,
+.regForm {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  margin: 0 auto;
+  max-width: 90vh;
+  width:100%;
+  height:auto;
+  padding:2.5rem;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(214, 211, 211);
+  border-radius:3px;
+  box-shadow:2px 2px 5px 5px rgb(121, 118, 118);
+}
+
+.form_login,
+.form_password,
+.loginBtn,
+.form_input {
+  width: 25rem;
+  height: 3vh;
+  margin-top: 5px;
+}
+
+.form_title {
+  margin-bottom: 3vh;
+  margin-top:0;
+  font-size:3.5rem;
+  @media (max-width:1100px){
+    font-size:2.2rem;
+  }
+}
+
+.loginBtn {
+  width: 100%;
+  max-width:50vh;
+  height: 5vh;
+  margin-top: 20px ;
+  margin-bottom:15px;
+  border: 1px solid rgb(197, 231, 195);
+  background: #1d746e;
+  color:white;
+  border-radius:5px;
+  &:hover{
+
+    
+    background:#2b6662;
+  }
+}
+
+.form_text {
+  margin-top: 2vh;
+}
+
+
+input{  
+  width:100%;
+  @media (max-width: 790px){
+    min-width:auto;
+  }
+}
+
+.input-field{
+  margin: 0.5rem 0;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  
+}
+
+
+span{
+  margin-left:1vh;
+  color:rgb(228, 30, 23);
+  font-size:0.9rem;
+}
+
+.box{
+  max-width:50vh;
+  width:100%;
+}
+
