@@ -1,9 +1,11 @@
-import React from 'react'
+import React,  { Component } from 'react'
+import { connect } from 'react-redux'
 
 import NavBar from '../../components/NavBar';
 
-const Home = () => {
-    
+class Home extends Component {
+   render(){
+       console.log(this.props)
     return (
         <div id="outer-container">
             <NavBar /> 
@@ -13,8 +15,13 @@ const Home = () => {
             </div>
             
         </div>
-    )
+    )}
 }
 
+const mapStateToProps = (state) => {
+    return{
+        projects: state.user.users
+    }
+}
 
-export default Home;
+export default connect(mapStateToProps)(Home);

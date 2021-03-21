@@ -6,7 +6,7 @@ import "./index.scss";
 export const SideBar = () => {
   return (
     <Menu>
-      <Link className="link" to="/">
+      <Link className="link" to="/Home">
         Home
       </Link>
       <Link className="link" to="/Plants">

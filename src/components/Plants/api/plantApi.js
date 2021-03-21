@@ -16,7 +16,7 @@ const PlantApi = (query) => {
       .then((response) => response.json())
       .then((pl) => {
         setPlants(pl);
-        console.log(pl);
+        console.log(pl.data);
       });
   };
 

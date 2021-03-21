@@ -1,23 +1,34 @@
-.regContainer, .loginContainer{
- margin-top:5vh;
+$dark-green: #1d746e;
+$light-green: #19a771;
+
+.container {
+  min-height: 50%;
   height:100%;
-  width:100%;
+  width: 50%;
+  margin: 15vh auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width:600px){
+    width:95%;
+  }
 }
 
-.logForm,
-.regForm {
+form {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
+  justify-content:center;
   margin: 0 auto;
   max-width: 90vh;
-  width:100%;
-  height:auto;
-  padding:2.5rem;
+  width: 100%;
+  height: auto;
+  min-height:60vh;
+  padding: 2.5rem;
   background: rgb(255, 255, 255);
   border: 1px solid rgb(214, 211, 211);
-  border-radius:3px;
-  box-shadow:2px 2px 5px 5px rgb(121, 118, 118);
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px 2px rgb(160, 102, 110);
 }
 
 .form_login,
@@ -31,59 +42,73 @@
 
 .form_title {
   margin-bottom: 3vh;
-  margin-top:0;
-  font-size:3.5rem;
-  @media (max-width:1100px){
-    font-size:2.2rem;
+  margin-top: 0;
+  font-size: 3.5rem;
+  @media (max-width: 1100px) {
+    font-size: 2.2rem;
   }
 }
 
-.loginBtn {
+.btn {
   width: 100%;
-  max-width:50vh;
-  height: 5vh;
-  margin-top: 20px ;
-  margin-bottom:15px;
+  max-width: 50vh;
+  font-weight: 500;
+  max-height: 5vh;
+  margin-top: 20px;
+  margin-bottom: 15px;
   border: 1px solid rgb(197, 231, 195);
-  background: #1d746e;
-  color:white;
-  border-radius:5px;
-  &:hover{
-
-    
-    background:#2b6662;
+  background: $dark-green;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  &:hover {
+    color: rgb(68, 25, 25);
+    background: $light-green;
   }
 }
 
 .form_text {
-  margin-top: 2vh;
+  margin-top: 1vh;
 }
 
-
-input{  
-  width:100%;
-  @media (max-width: 790px){
-    min-width:auto;
+input {
+  width: 100%;
+  margin: 5px 0;
+  @media (max-width: 790px) {
+    min-width: auto;
   }
 }
 
-.input-field{
-  margin: 0.5rem 0;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  
+.input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-
-span{
-  margin-left:1vh;
-  color:rgb(228, 30, 23);
-  font-size:0.9rem;
+span {
+  margin-left: 1vh;
+  color: rgb(228, 30, 23);
+  font-size: 0.9rem;
 }
 
-.box{
-  max-width:50vh;
-  width:100%;
+.box {
+  max-width: 50vh;
+  width: 100%;
 }
 
+.form_link {
+  text-decoration: underline;
+  color: black;
+}
+
+.form_link:hover {
+  text-decoration: underline 2px solid $light-green;
+}
+
+.forgot_pass {
+  color: black;
+}
+
+.forgot_pass:hover {
+  color: $light-green;
+}

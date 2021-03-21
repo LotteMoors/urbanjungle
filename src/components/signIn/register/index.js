@@ -1,18 +1,27 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { connect, useDispatch } from "react-redux";
+import { createUser } from "../../../store/actions/projectActions.js";
 
-const Register = ({ submitForm }) => {
+let Register = () => {
   const { register, errors, handleSubmit, watch } = useForm({});
+
   const password = useRef({});
   password.current = watch("password", "");
+
+  const dispatch = useDispatch();
+
   const onSubmit = async (data) => {
     console.log(data);
+    dispatch(createUser(data));
   };
 
+
+
   return (
-    <div className="regContainer">
-      <form className="regForm " onSubmit={handleSubmit(onSubmit)}>
+    <div className="container">
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <h1 className="form_title">Create Account</h1>
         <div className="box">
           <div className="input-field col s12">
@@ -24,7 +33,7 @@ const Register = ({ submitForm }) => {
                 required: "Empty field",
                 minLength: {
                   value: 3,
-                  message: "Username must be at least 3 characters.",
+                  message: "Username must be at least 3 characters",
                 },
               })}
             />
@@ -69,7 +78,7 @@ const Register = ({ submitForm }) => {
               name="password_repeat"
               ref={register({
                 validate: (value) =>
-                  value === password.current || "The passwords do not match",
+                  value === password.current || "TPasswords don't match",
               })}
             />
             {errors.password_repeat && (
@@ -77,12 +86,12 @@ const Register = ({ submitForm }) => {
             )}
           </div>
         </div>
-        <button className="loginBtn" type="submit">
+        <button className="btn" type="submit">
           Continue
         </button>
         <div className="form_text ">
           Already have an account?{" "}
-          <Link className="link" to="/Login">
+          <Link className="form_link" to="/Login">
             Log in.
           </Link>
         </div>
@@ -90,5 +99,12 @@ const Register = ({ submitForm }) => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  users: state.users,
+});
+
+
+
+Register = connect(null, mapStateToProps)(Register);
 
 export default Register;
