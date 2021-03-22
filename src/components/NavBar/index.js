@@ -1,15 +1,18 @@
 import React from "react";
 import { Head } from "./Nav";
-import { SideBar } from "./Sidebar";
+import { SignedIn } from "./Sidebar/SignedIn";
+// import { SignedOut } from "./Sidebar/SignedOut";
+import { connect } from 'react-redux'
 
 function NavBar() {
   return (
     <div id="outer-container" style={{maxHeight:"5vh"}}>
-      <SideBar pageWrapId={"outer-container"} />
+      <SignedIn pageWrapId={"outer-container"} />
+      {/* <SignedOut pageWrapId={"outer-container"} /> */}
 
       <Head />
     </div>
   );
 }
 
-export default NavBar;
+export default connect()(NavBar);

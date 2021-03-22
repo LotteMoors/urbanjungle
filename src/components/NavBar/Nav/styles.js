@@ -28,10 +28,10 @@ export const Logo = styled.div`
   height: auto;
   max-width: 100vh;
   @media (max-width: 768px) {
-    width:80%
+    width:100%;
   }
   @media (min-width: 768px) and (max-width: 1100px) {    
-    margin-left:10vh;
+    width:70%;
   }
 `;
 

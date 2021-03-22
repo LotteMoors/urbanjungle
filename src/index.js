@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import './index.scss'
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -16,7 +17,7 @@ import fbConfig from "./config/fbConfig";
 import firebase from "firebase/app";
 
 const store = createStore(
-  rootReducer,
+  rootReducer,  
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
     reduxFirestore(firebase, fbConfig)

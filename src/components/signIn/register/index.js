@@ -1,20 +1,34 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { connect, useDispatch } from "react-redux";
-import { createUser } from "../../../store/actions/projectActions.js";
+import {  useDispatch } from "react-redux";
+import { createMessage } from "../../../store/actions/messageActions.js";
 
 let Register = () => {
   const { register, errors, handleSubmit, watch } = useForm({});
+  const [user, setUser] = useState({
+    username:"",
+    email:"",
+    password:""
+  })
 
   const password = useRef({});
   password.current = watch("password", "");
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    dispatch(createUser(data));
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    
+    setUser(prevState => ({ 
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+  const onSubmit = async () => {
+    console.log(user);
+    dispatch(createMessage(user));    
   };
 
 
@@ -29,11 +43,13 @@ let Register = () => {
             <input
               type="text"
               name="username"
+              onChange={handleChange}
+              className={errors.username? "invalid" : null}
               ref={register({
                 required: "Empty field",
                 minLength: {
-                  value: 3,
-                  message: "Username must be at least 3 characters",
+                  value: 5,
+                  message: "Username must be at least 5 characters",
                 },
               })}
             />
@@ -45,6 +61,8 @@ let Register = () => {
             <input
               type="email"
               name="email"
+              onChange={handleChange}
+              className={errors.email? "invalid" : null}
               ref={register({
                 required: "Empty field",
                 pattern: {
@@ -61,6 +79,8 @@ let Register = () => {
             <input
               type="password"
               name="password"
+              onChange={handleChange}
+              className={errors.password? "invalid" : null}
               ref={register({
                 required: "Empty field",
                 minLength: {
@@ -76,9 +96,10 @@ let Register = () => {
             <input
               type="password"
               name="password_repeat"
+              className={errors.password_repeat? "invalid" : null}
               ref={register({
                 validate: (value) =>
-                  value === password.current || "TPasswords don't match",
+                  value === password.current || "Passwords don't match",
               })}
             />
             {errors.password_repeat && (
@@ -99,12 +120,7 @@ let Register = () => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  users: state.users,
-});
 
 
-
-Register = connect(null, mapStateToProps)(Register);
 
 export default Register;

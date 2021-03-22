@@ -1,27 +1,23 @@
-import React,  { Component } from 'react'
-import { connect } from 'react-redux'
+import React  from 'react'
+import { useSelector } from 'react-redux'
 
 import NavBar from '../../components/NavBar';
 
-class Home extends Component {
-   render(){
-       console.log(this.props)
+
+const Home = ()=>{
+    
+    const {ms} = useSelector(state => state.messages)
+   
     return (
         <div id="outer-container">
             <NavBar /> 
             
             <div id="welcomeBox">
-            
+            {ms.title}
             </div>
             
         </div>
-    )}
+    )
 }
 
-const mapStateToProps = (state) => {
-    return{
-        projects: state.user.users
-    }
-}
-
-export default connect(mapStateToProps)(Home);
+export default Home;

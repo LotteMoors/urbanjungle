@@ -1,9 +1,9 @@
 import React from "react";
 import { elastic as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
-import "./index.scss";
+import "../index.scss";
 
-export const SideBar = () => {
+export const SignedOut = () => {
   return (
     <Menu>
       <Link className="link" to="/Home">
@@ -12,14 +12,7 @@ export const SideBar = () => {
       <Link className="link" to="/Plants">
         Plants
       </Link>
-
-      <Link className="link" to="/Profile">
-        Profile
-      </Link>
-
-      <Link className="link" to="/Community">
-        Community
-      </Link>     
+          
     </Menu>
   );
 };
