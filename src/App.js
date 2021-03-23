@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route , Switch} from "react-router-dom";
 
-
-
-
 import Home from './views/Home'
 import Login from './views/Login'
 import Register from './views/Register'
@@ -12,12 +9,9 @@ import Community from './views/Community'
 import Profile from './views/Profile'
 
 function App(){ 
-
-
  
   return (
-     <>
-     
+     <>     
         <Router>
          
           <Switch>
@@ -29,7 +23,6 @@ function App(){
           <Route path="/Profile" component={Profile} />
           </Switch>
         </Router>
-      
     </>
   
   );
