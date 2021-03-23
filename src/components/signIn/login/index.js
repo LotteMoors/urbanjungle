@@ -11,7 +11,7 @@ const LogIn = () => {
     password: "",
   });
   const { handleSubmit } = useForm({});
-  const { authReducer, authError } = useSelector((state) => state.auth);
+  const { authError, isLoggedIn } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -23,13 +23,12 @@ const LogIn = () => {
     }));
   };
 
-  if (authReducer) {
-    <Redirect to="/Home" />;
-  }
-
+ 
+ 
   const onSubmit = async () => {
     console.log(data);
     dispatch(signIn(data));
+    
   };
 
   return (
@@ -71,6 +70,7 @@ const LogIn = () => {
             Forgot your password?
           </a>
         </div>
+        { isLoggedIn ? <Redirect to='/Home' /> : null}
       </form>
     </div>
   );

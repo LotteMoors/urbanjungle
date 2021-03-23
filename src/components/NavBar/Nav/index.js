@@ -1,5 +1,4 @@
 import React from "react";
-// import { useSelector } from "react-redux";
 import { SignedOutLink } from "./SignedOut";
 import { SignedInLink } from "./SignedIn";
 import { connect } from "react-redux";

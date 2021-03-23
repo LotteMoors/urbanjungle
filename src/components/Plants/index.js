@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Main, SideBox, PlantBox, Input, Category } from "./styles";
 
 const Plants = () => {
-  const [query, setQuery] = useState(null)
+  // const [query, setQuery] = useState(null)
  
 
   return (
@@ -20,8 +20,8 @@ const Plants = () => {
           type="text"
           className="search-bar"
           placeholder="Search plant"
-          onChange={(e) => setQuery(e.target.value)}
-          value={query}
+          // onChange={(e) => setQuery(e.target.value)}
+          // value={query}
         />
 
         

@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import {  useDispatch } from "react-redux";
-// import { signIn } from "../../../store/actions/authActions.js";
+import {  useDispatch } from "react-redux";
+import { signUp } from "../../../store/actions/authActions.js";
 
 let Register = () => {
   const { register, errors, handleSubmit, watch } = useForm({});
   const [user, setUser] = useState({
-    username:"",
+  
     email:"",
     password:""
   })
@@ -15,6 +15,7 @@ let Register = () => {
   const password = useRef({});
   password.current = watch("password", "");
 
+  const dispatch = useDispatch();
   
 
   const handleChange = (e) => {
@@ -27,7 +28,8 @@ let Register = () => {
   }
 
   const onSubmit = async () => {
-    console.log(user);   
+    console.log(user);  
+    dispatch(signUp(user)) 
   };
 
 

@@ -1,23 +1,35 @@
-import React  from 'react'
-import { useSelector } from 'react-redux'
+import React from "react";
 
-import NavBar from '../../components/NavBar';
+import { connect } from 'react-redux'
+import NavBar from "../../components/NavBar";
+import { Full, Box } from "../../components/Homepage";
 
+const Home = (props) => {
+    const { auth } = props
 
-const Home = ()=>{
+    const name = auth.username
+  
+
+  return (
+      
+    <div>
+      <NavBar />
+      <Full>
+        <Box>
+            <h1>
+                Hello {name}
+            </h1>
+        </Box>
+      </Full>
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => {
     
-    const {ms} = useSelector(state => state.message)
-   
-    return (
-        <div id="outer-container">
-            <NavBar /> 
-            
-            <div id="welcomeBox">
-            {console.log(ms)}
-            </div>
-            
-        </div>
-    )
-}
+    return {
+      auth: state.firebase.auth,
+    };
+  };
 
-export default Home;
+export default connect(mapStateToProps)(Home);
