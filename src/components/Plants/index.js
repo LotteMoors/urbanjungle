@@ -1,34 +1,10 @@
-import React, { useState, useEffect } from "react";
-import fetch from "node-fetch";
+import React, { useState } from "react";
 
 import { Main, SideBox, PlantBox, Input, Category } from "./styles";
 
 const Plants = () => {
-  const [query, setQuery] = useState("");
-  const [plants, setPlants] = useState("");
-
-  const apiURL =
-    "https://trefle.io/api/v1/species?token=Fvppw0rWoJBQRNwj0bnOURGVvr7vzGTkAub8v7r3S8M";
-
-  useEffect(() => {
-    fetch(apiURL, {
-      mode: "no-cors",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((pl) => {
-        console.log(pl);
-        setPlants(pl);
-      })
-      .catch((e) => console.error(e.message));
-  }, []);
+  const [query, setQuery] = useState(null)
+ 
 
   return (
     <Main>
@@ -48,7 +24,7 @@ const Plants = () => {
           value={query}
         />
 
-        <div>{plants && <p>{plants}</p>}</div>
+        
       </PlantBox>
     </Main>
   );

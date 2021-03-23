@@ -41,7 +41,7 @@ form {
 }
 
 .form_title {
-  margin-bottom: 3vh;
+  margin-bottom: 2vh;
   margin-top: 0;
   font-size: 3.5rem;
   @media (max-width: 1100px) {
@@ -120,6 +120,10 @@ span {
 
 .forgot_pass:hover {
   color: $light-green;
+}
+
+p{
+  color:$red;
 }
 
 

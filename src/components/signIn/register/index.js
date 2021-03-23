@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {  useDispatch } from "react-redux";
-import { createMessage } from "../../../store/actions/messageActions.js";
+// import {  useDispatch } from "react-redux";
+// import { signIn } from "../../../store/actions/authActions.js";
 
 let Register = () => {
   const { register, errors, handleSubmit, watch } = useForm({});
@@ -15,7 +15,7 @@ let Register = () => {
   const password = useRef({});
   password.current = watch("password", "");
 
-  const dispatch = useDispatch();
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -27,8 +27,7 @@ let Register = () => {
   }
 
   const onSubmit = async () => {
-    console.log(user);
-    dispatch(createMessage(user));    
+    console.log(user);   
   };
 
 

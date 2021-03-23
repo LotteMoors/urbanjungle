@@ -11,8 +11,7 @@ import Search from './views/Search'
 import Community from './views/Community'
 import Profile from './views/Profile'
 
-function App(){
-  
+function App(){ 
 
 
  
