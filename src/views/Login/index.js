@@ -4,7 +4,7 @@ import Log from '../../components/signIn/login'
 import NavBar from '../../components/NavBar'
 import Container from '../../components/Container'
 
-const Login = ({clicked}) => {
+const Login = () => {
 
   return (
     <div style={{background:"#FFDAB9"}}>
