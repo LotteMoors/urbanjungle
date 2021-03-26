@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: "urbanjungle-2f3d6.appspot.com",
   messagingSenderId: "653185632787",
   appId: "1:653185632787:web:4ad1466515e8df1d060de6",
-  measurementId: "G-4EGJ9ZLQJS"
+  measurementId: "G-4EGJ9ZLQJS" 
 };
 
   firebase.initializeApp(firebaseConfig);

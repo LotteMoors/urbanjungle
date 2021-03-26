@@ -1,16 +1,14 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {  useDispatch } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../../store/actions/authActions.js";
 
 let Register = () => {
   const { register, errors, handleSubmit, watch } = useForm({});
-  const [user, setUser] = useState({
-  
-    email:"",
-    password:""
-  })
+  const [user, setUser] = useState(null)
+
+  const { isLoggedIn } = useSelector((state) => state.auth)
 
   const password = useRef({});
   password.current = watch("password", "");
@@ -27,7 +25,7 @@ let Register = () => {
     }))
   }
 
-  const onSubmit = async () => {
+  const onSubmit =  () => {
     console.log(user);  
     dispatch(signUp(user)) 
   };
@@ -49,8 +47,8 @@ let Register = () => {
               ref={register({
                 required: "Empty field",
                 minLength: {
-                  value: 5,
-                  message: "Username must be at least 5 characters",
+                  value: 6,
+                  message: "Username must be at least 6 characters",
                 },
               })}
             />
@@ -67,7 +65,7 @@ let Register = () => {
               ref={register({
                 required: "Empty field",
                 pattern: {
-                  value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  value: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
                   message: "Invalid email address",
                 },
               })}
@@ -118,6 +116,7 @@ let Register = () => {
           </Link>
         </div>
       </form>
+      { isLoggedIn ? <Redirect to='/Home' /> : null}
     </div>
   );
 };

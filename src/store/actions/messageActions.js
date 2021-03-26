@@ -2,8 +2,7 @@ export const createMessage = (message) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
 
         const firestore = getFirestore();
-        firestore.collection('Messages').add({
-            ...message,            
+        firestore.collection('Message').add({                     
             creator: 'Leo',
             title: 'Hi',
             message:'test123'        

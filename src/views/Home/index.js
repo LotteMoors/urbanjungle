@@ -5,9 +5,9 @@ import NavBar from "../../components/NavBar";
 import { Full, Box } from "../../components/Homepage";
 
 const Home = (props) => {
-    const { auth } = props
+    const { profile  } = props
 
-    const name = auth.username
+    const name = profile.username
   
 
   return (
@@ -17,7 +17,8 @@ const Home = (props) => {
       <Full>
         <Box>
             <h1>
-                Hello {name}
+                Welcome               
+                {name && ' ' + name}
             </h1>
         </Box>
       </Full>
@@ -26,9 +27,10 @@ const Home = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    
+    console.log(state)
     return {
       auth: state.firebase.auth,
+      profile: state.firebase.profile
     };
   };
 

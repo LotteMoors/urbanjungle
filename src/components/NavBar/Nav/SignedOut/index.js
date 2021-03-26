@@ -10,8 +10,7 @@ export const SignedOutLink = () => {
           <Link className="link" to="/Login">
             <HoverBox>Sign In</HoverBox>
           </Link>
-        </Box>
-        
+        </Box>      
      
     
   );

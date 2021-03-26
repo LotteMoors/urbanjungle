@@ -23,8 +23,7 @@ const Head = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
+const mapStateToProps = (state) => { 
   return {
     auth: state.firebase.auth,
   };

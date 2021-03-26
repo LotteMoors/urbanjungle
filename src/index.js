@@ -35,11 +35,13 @@ function AuthIsLoaded({ children }) {
   return children;
 }
 
+const rrfConfig = { userProfile: 'users', useFirestoreForProfile: true, attachAuthIsReady: true} 
+
 const rrfProps = {
   firebase,
-  config: fbConfig,
+  config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance,
+  createFirestoreInstance  
 };
 
 ReactDOM.render(
