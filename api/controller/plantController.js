@@ -13,17 +13,6 @@ const getPlants = (req,res) => {
     })
 }
 
-// const getPlant = (req,res) => {
-//     fetch(apiURL) 
-//     .then(res => res.json())
-//     .then(b => b.data)  
-//     .then(pl => {
-//         console.log(pl)
-//         res.render('search', {pl:pl})
-//     })
-// }
-
-
 
 
 module.exports = {getPlants}

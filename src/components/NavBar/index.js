@@ -13,7 +13,7 @@ function NavBar(props) {
   );
 
   return (
-    <div id="outer-container" style={{ maxHeight: "5vh" }}>
+    <div id="outer-container" style={{ maxHeight: "5vh"}}>
       {links}
       <Head />
     </div>

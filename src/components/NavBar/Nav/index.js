@@ -1,4 +1,5 @@
 import React from "react";
+// import { Link  } from "react-router-dom";
 import { SignedOutLink } from "./SignedOut";
 import { SignedInLink } from "./SignedIn";
 import { connect } from "react-redux";
@@ -13,9 +14,9 @@ const Head = (props) => {
   return (
     <Nav>
       <Bar></Bar>
-      <Logo>
-        <img src={logo} style={{ width: "38px", height: "38px" }} alt="logo" />
-        <Title>Urban Jungle</Title>
+      <Logo>        
+        <img src={logo} style={{ width: "38px", height: "38px" , marginRight:"10px"}} alt="logo" />
+        <Title>Urban Jungle</Title>        
       </Logo>
 
       {links}

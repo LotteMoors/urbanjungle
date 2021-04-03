@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 app.get('/', getPlants)
 
 
-const port = process.env.PUBLIC_URL || 3009
+const port = process.env.PUBLIC_URL || 3001
 
 app.listen(port,()=>{
     console.log(`Server is running on port: ${port}`)
