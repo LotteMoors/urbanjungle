@@ -12,14 +12,14 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 1em auto;
-  height: auto;
-  width: 22%;
+  height: 25em;
+  width: 25%;
 `;
 
 export const Body = styled.div`
   height: auto;
-  min-height: 30em;
-  width:100%;
+  min-height: 25em;
+  width: 80%;
   display: flex;
   flex-direction: column;
   border-radius: 3px;
@@ -29,30 +29,28 @@ export const Body = styled.div`
 
 export const ImageBox = styled.div`
   background: transparent;
-  padding-bottom: 1em;
+  
 `;
-export const Content = styled.div`
-padding:5px;
-  height: 25%;
+export const Content = styled.div`  
+  height: 50%;
   text-align: center;
   margin: 0 auto;
 `;
 
 export const Title = styled.h1`
   text-align: center;
-  margin: 5px auto;
+  margin: 0px auto;
   font-size: 1.6em;
 `;
 
 export const Side = styled.h3`
   font-size: 1em;
-  margin: 1 auto;
+  margin: 10px auto;
   text-align: center;
 `;
 
 export const Button = styled.button`
-    background-color: rgba(13, 39, 17, 0.7);
-    color:white;
-    padding:0.5em;
-    
-`
+  background-color: rgba(13, 39, 17, 0.7);
+  color: white;
+  padding: 0.5em;
+`;

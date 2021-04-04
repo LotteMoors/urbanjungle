@@ -1,0 +1,14 @@
+$dark-green: #1d746e;
+
+.pagination{
+    cursor:pointer;   
+}  
+
+.pagination .active{
+    background: linear-gradient(
+        328deg,
+        rgba(29, 116, 110, 1) 15%,
+        rgba(25, 167, 113, 1) 85%
+      );
+      border-radius:2px;
+}

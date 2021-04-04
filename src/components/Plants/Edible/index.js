@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../../Loader";
+import ReactPaginate from "react-paginate";
 import axios from "axios";
-import {
-  Main,
-  Card,
-  Body,
-  ImageBox,
-  Content,
-  Title,
-  Side,
-} from "../Plant/styles";
+import { Main, Card, Body, ImageBox, Content, Title, Side } from "../Plant/styles";
 
-const Search = ({ query }) => {
+const Edible = () => {
   const [data, setData] = useState(null);
+  const [page, setPage] = useState(1);
 
-  const URL = `/api/v1/plants/search?token=${process.env.REACT_APP_TREFLE_TOKEN}&q=${query}`;
+  const URL = `/api/v1/plants?token=${process.env.REACT_APP_TREFLE_TOKEN}&page=${page}&filter[edible]=true`;
   const replacer =
     "http://www.wiu.edu/student_services/housing/residence_halls/images/furniture/no-image-available.png";
+
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+    setPage(selectedPage + 1);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +28,7 @@ const Search = ({ query }) => {
         },
         widthCredentials: true,
       });
+
       setData(result.data.data);
     };
 
@@ -39,7 +39,7 @@ const Search = ({ query }) => {
     return <Loader />;
   }
   return (
-    <div style={{ margin: "0 auto", textAlign: "center", marginBottom: "4em" }}>
+    <div style={{margin:"0 auto", textAlign:"center", marginBottom:"4em"}}>
       <Main>
         {console.log(data)}
 
@@ -48,11 +48,7 @@ const Search = ({ query }) => {
             <Body className="card-body">
               <Content>
                 <Title>{item.common_name}</Title>
-                <Side>
-                  {item.family_common_name === "Trefle family"
-                    ? null
-                    : item.family_common_name}
-                </Side>
+                <Side>{item.family_common_name}</Side>
               </Content>
               <ImageBox>
                 <img
@@ -65,8 +61,21 @@ const Search = ({ query }) => {
           </Card>
         ))}
       </Main>
+      <ReactPaginate
+        previousLabel={"prev"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        pageCount={12}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        subContainerClassName={"pages pagination"}
+        activeClassName={"active"}
+      />
     </div>
   );
 };
 
-export default Search;
+export default Edible;

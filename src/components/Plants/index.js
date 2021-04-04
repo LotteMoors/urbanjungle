@@ -1,51 +1,53 @@
 import React, { useState } from "react";
-import ReactPaginate from 'react-paginate';
+
 import { Main, SideBox, PlantBox, Input, Category } from "./styles";
-import Plant from './Plant'
+import Plant from "./Plant";
+import Trees from "./Trees";
+import Edible from "./Edible";
+import Succulents from "./Succulents";
+import Flowers from "./Flowers";
+import Search from "./Search";
 
 const Plants = () => {
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
+  const [click, setClick] = useState("All");
 
-
-  const handlePageClick = (e) => {
-    const selectedPage = e.selected;
-    setPage(selectedPage + 1)
-};
-
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
 
   return (
     <Main>
       <SideBox>
-        <Category>All</Category>
-        <Category>Trees</Category>
-        <Category>Flowers</Category>
-        <Category>Succulents</Category>
-        <Category>Vegetables</Category>
+        <Category onClick={() => setClick("All")}>All</Category>
+        <Category onClick={() => setClick("Trees")}>Trees</Category>
+        <Category onClick={() => setClick("Flowers")}>Flowers</Category>
+        <Category onClick={() => setClick("Succulents")}>Succulents</Category>
+        <Category onClick={() => setClick("Edible")}>Edible</Category>
       </SideBox>
-
       <PlantBox>
         <Input
           type="text"
           className="search-bar"
           placeholder="Search plant"
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleChange}
           value={query}
         />
+        {query !== "" ? <Search query={query} /> : null}
 
-       <Plant page={page} />
-       <ReactPaginate
-                    previousLabel={"prev"}
-                    nextLabel={"next"}
-                    breakLabel={"..."}
-                    breakClassName={"break-me"}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    pageCount={400}
-                    onPageChange={handlePageClick}
-                    containerClassName={"pagination"}
-                    subContainerClassName={"pages pagination"}
-                    activeClassName={"active"}/>
+        {click === "All" ? (
+          <Plant />
+        ) : click === "Trees" ? (
+          <Trees />
+        ) : click === "Edible" ? (
+          <Edible />
+        ) : click === "Succulents" ? (
+          <Succulents />
+        ) : click === "Flowers" ? (
+          <Flowers />
+        ) : (
+          <Plant />
+        )}
       </PlantBox>
     </Main>
   );
