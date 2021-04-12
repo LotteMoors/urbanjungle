@@ -15,7 +15,7 @@ import {
   IconBox
 } from "../../../Plants/Card/styles";
 
-const Cards = ({ item }) => {
+const Cards = ({ item, setSelf, setMore  }) => {
 
   const dispatch = useDispatch();
 
@@ -25,6 +25,12 @@ const Cards = ({ item }) => {
     const handleClick =  () => {
        dispatch(deleteLiked(item))
     }
+
+    const handleSelf = () => {
+      setSelf(item.self)
+      setMore(true)
+      window.scrollTo(0,0)
+    };
     
   return (
     <>
@@ -37,7 +43,7 @@ const Cards = ({ item }) => {
             <Icon
               small
               style={{ cursor: "pointer" }}
-              // onClick={handleSelf}                      
+              onClick={handleSelf}                    
             >
               more_horiz
             </Icon>

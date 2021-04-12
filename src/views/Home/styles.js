@@ -4,7 +4,7 @@ export const Full = styled.div`
   /* background: url("https://images.unsplash.com/photo-1541959833400-049d37f98ccd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
   background-size: cover;
   background-repeat: no-repeat; */
-  background-color: #daac96;
+  background-color: #c19a6b;
   height: 100%;
   min-height: 100vh;
   width: 100%;
@@ -20,8 +20,9 @@ export const Box = styled.div`
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;
+  color:	#faebd7;
   min-height: 75vh;
-  background: #daac96;
+  background: #c19a6b;
   word-break: break-word;
   @media (max-width: 560px) {
     margin-top: 2em;
@@ -53,7 +54,7 @@ export const Trefle = styled.h3`
       content: "";
       position: absolute;
       width: 100%;
-      height: 3px;
+      height: 2px;
       background-color: green;
       bottom: 0; //to place it in bottom
       left: 0;
@@ -80,8 +81,9 @@ export const Trefle = styled.h3`
 export const ButtonBox = styled.div`
   height: 15vh;
   margin: 5em auto;
-  width: 70%;
+  width: 85%;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   @media (max-width: 560px) {
     flex-flow: column;
@@ -91,27 +93,28 @@ export const ButtonBox = styled.div`
 `;
 
 export const Button = styled.button`
-  margin: 0 auto;
+  margin:auto 0 ;
   font-weight: 400;
   min-width: 15vh;
-  max-width: 40vh;
+  max-width: 45vh;
   width: 100%;
-  height: 13vh;
+  height: 15vh;
   border: none;
-  font-size: 2em;
+  border-radius:3px;
+  font-size: 2.5em;
   cursor: pointer;
-  background-color: #2e8b57;
-  color: white;
+  background-color: #4DAF6E;
+  color: black;
 
   border-radius: 3px;
   .link-home {
-    color: white;
+    color: black;
   }
   &:focus {
-    background-color: #B5FFC8;
+    background-color: #6BC199;
   }
   &:hover {
-    background-color: #B5FFC8;
+    background-color: #6BC199;
     .link-home {
       color: black;
     }

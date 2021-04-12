@@ -1,12 +1,11 @@
-import React, { useEffect, useContext } from "react";
-import { Context } from "../../index.js";
+import React, { useEffect } from "react";
+
 import M from "materialize-css/dist/js/materialize.min.js";
 import { Icon } from "react-materialize";
-import Loader from "../../../Loader";
-import "../style.scss";
+import Loader from "../../Loader";
+import "./style.scss";
 
-const Carousel = ({ data }) => {
-  const { updateImg } = useContext(Context);
+const Carousel = ({ data ,setImg}) => {
   useEffect(() => {
     var elems = document.querySelectorAll(".carousel");
     M.Carousel.init(elems, {
@@ -23,13 +22,14 @@ const Carousel = ({ data }) => {
   return (
     <div className="carousel-box">
       <Icon
-        style={{ margin: "-3em 0 0em -0.5em ", width: "15%", zIndex:"10", cursor:'pointer', position:'relative', left:'-0.8em', top:'-0.5em' }}
-        onClick={() => updateImg(true)}
+        style={{ margin: "-3em 0 0em -0.5em ", z_index:'5', width: "15%", zIndex:"10", cursor:'pointer', position:'relative', left:'-0.8em', top:'-0.5em' }}
+        onClick={setImg(true)}
         medium
       >
         chevron_left
       </Icon>
       <div className="carousel">
+          {console.log(data.images)}
         {data.images.flower
           ? data.images.flower.map((fl, index) => (
               <a className="carousel-item" key={index} href="#/images">

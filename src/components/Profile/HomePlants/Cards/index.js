@@ -13,15 +13,16 @@ import {
   Trash,
 } from "../../../Plants/Card/styles";
 
-const Cards = ({ item, setSelf, setMore }) => {
+const Cards = ({ item, setSelf, setMore  }) => {
   const dispatch = useDispatch();
   const replacer =
     "http://www.wiu.edu/student_services/housing/residence_halls/images/furniture/no-image-available.png";
 
-  // const handleSelf = () => {
-  //   setSelf(item.self);
-  //   setMore(true)
-  // };
+  const handleSelf = () => {
+    setSelf(item.self)
+    setMore(true)
+    window.scrollTo(0,0)
+  };
 
   const handleClick = async () => {
     dispatch(deleteHome(item));
@@ -29,7 +30,7 @@ const Cards = ({ item, setSelf, setMore }) => {
 
   return (
     <>
-      <Card>
+      <Card >
         <Body className="card-body">
           <Content>
             <CardTitle>{item.name && item.name}</CardTitle>{" "}
@@ -38,7 +39,7 @@ const Cards = ({ item, setSelf, setMore }) => {
             <Icon
               small
               style={{ cursor: "pointer" }}
-              // onClick={handleSelf}
+              onClick={handleSelf}
             >
               more_horiz
             </Icon>

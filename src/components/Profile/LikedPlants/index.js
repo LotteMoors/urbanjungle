@@ -1,48 +1,74 @@
-import React from "react";
-import {  useSelector } from "react-redux";
+import React, {useState} from "react";
+import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { Link } from "react-router-dom";
 import { Icon } from "react-materialize";
-import ScrollTop from '../../ScrollTop'
+import { Link } from "react-router-dom";
 import NavBar from "../../NavBar";
 import Cards from "./Cards";
-import { HomeBox, GoBackBtn, LikedContainer, Full, Main, Title, TitleBox } from "../styles";
-
-const LikedPlants = ({scrollTop}) => {
-  const { LikedPlants } = useSelector((state) => state.firestore.ordered);
-  const { auth } = useSelector((state) => state.firebase);
-
+import ScrollTop from "../../ScrollTop";
+import {
+  HomeBox,
+  HomeContainer,
+  Title,
+  TitleBox,
+  GoBackBtn,
+  Full,
+  Main
   
+} from "../styles";
+import More from './More'
+
+const LikedPlant = ({ scrollTop }) => {
+  const { auth } = useSelector((state) => state.firebase);
+  const { LikedPlants } = useSelector((state) => state.firestore.ordered);
+  const [ more, setMore ] = useState(false)
+  const [self, setSelf] = useState("");
+
+ 
+  // if (!HomePlants) {
+  //   return <p>No plants yet</p>;
+  // }
   return (
     <Full>
       <NavBar />
       <Main>
-      <Link to="/Profile">
+        <Link to="/Profile">
           <GoBackBtn>
             〈 <p> GO BACK</p>
           </GoBackBtn>
         </Link>
-        <LikedContainer>
+        <HomeContainer>
           <TitleBox>
-            <Icon medium style={{color:'#DC143C'}}>favorite</Icon>
-            <Title>LIKED</Title>
+             
+            <Icon medium style={{ color: "#DC143C" }}>
+              favorite
+            </Icon>
+            <Title>Liked</Title>
           </TitleBox>
+         {more ? <More setMore={setMore} self={self}/> : null}
           <HomeBox>
-            {!LikedPlants ? null : 
-            LikedPlants === undefined || LikedPlants === null 
+            
+            {!LikedPlants || LikedPlants === null || LikedPlants === undefined
               ? null
               : LikedPlants.map((item, index) => {
                   return item.authID === auth.uid ? (
-                    <Cards key={index} item={item} />
+                    <Cards
+                      key={index}
+                      LikedPlants={LikedPlants}
+                      query={`${auth.uid}+${item.id}`}
+                      item={item}
+                      auth={auth}
+                      setSelf={setSelf}
+                      setMore={setMore}
+                    />
                   ) : null;
                 })}
-                
           </HomeBox>
-        </LikedContainer>
+        </HomeContainer>
       </Main>
-      <ScrollTop onClick={scrollTop}/>   
+      <ScrollTop onClick={scrollTop} />
     </Full>
   );
 };
@@ -63,4 +89,4 @@ export default compose(
       collection: "LikedPlants",
     }
   ])
-)(LikedPlants);
+)(LikedPlant);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
@@ -18,13 +18,15 @@ import {
   Main
   
 } from "../styles";
+import More from './More'
 
 const HomePlant = ({ scrollTop }) => {
   const { auth } = useSelector((state) => state.firebase);
   const { HomePlants } = useSelector((state) => state.firestore.ordered);
-  // const [more, setMore] = useState(false);
-  // const [self, setSelf] = useState(null)
+  const [ more, setMore ] = useState(false)
+  const [self, setSelf] = useState("");
 
+ 
   // if (!HomePlants) {
   //   return <p>No plants yet</p>;
   // }
@@ -39,13 +41,15 @@ const HomePlant = ({ scrollTop }) => {
         </Link>
         <HomeContainer>
           <TitleBox>
+             
             <Icon medium style={{ color: "#228B22" }}>
               home
             </Icon>
             <Title>HOME</Title>
           </TitleBox>
+         {more ? <More setMore={setMore} self={self}/> : null}
           <HomeBox>
-            {/* {more === true ? <More  self={self}/> : null} */}
+            
             {!HomePlants || HomePlants === null || HomePlants === undefined
               ? null
               : HomePlants.map((item, index) => {
@@ -56,10 +60,11 @@ const HomePlant = ({ scrollTop }) => {
                       query={`${auth.uid}+${item.id}`}
                       item={item}
                       auth={auth}
+                      setSelf={setSelf}
+                      setMore={setMore}
                     />
                   ) : null;
                 })}
-                {console.log(HomePlants)}
           </HomeBox>
         </HomeContainer>
       </Main>

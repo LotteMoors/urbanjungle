@@ -29,6 +29,7 @@ export const HomeContainer = styled.div`
   height: auto;
   display: flex;
   flex-flow: row wrap;
+  width: 100%;
 `;
 export const LikedContainer = styled.div`
   margin: 4em auto;
@@ -70,14 +71,14 @@ export const HomeBox = styled.div`
 export const PlantBox = styled.div`
   width: 100%;
   min-width:15vh;
-  height: 70vh;
+  height: 55vh;
   background-image: url("https://i.ibb.co/GPVYTk6/eee.png");
   background-size: cover;
   background-repeat: no-repeat;  
   @media (max-width:768px){
     flex-direction: column;
     justify-content: space-around;
-    height:60vh;
+    height:95vh;
   }
 `;
 export const ButtonBox = styled.div`
@@ -115,6 +116,7 @@ export const Button = styled.button`
 export const GoBackBtn = styled.button`
   width: 25vh;
   border: none;
+  z-index:1;
   font-size: 1.8em;
   background: transparent;
   position: absolute;

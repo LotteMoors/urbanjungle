@@ -17,29 +17,27 @@ export const SignedIn = () => {
     window.scrollTo(0,0)
   }
   return (
-    <Menu >
-      <Link onClick={scrollToTop} className="link" to="/Home">
-        <div>
-        Home
-        </div>
+    <Menu disableAutoFocus >
+      <Link  onClick={scrollToTop} className="link" to="/Home">        
+        Home        
       </Link>
       <Link  onClick={scrollToTop} className="link" to="/Plants">
-        <div>
+        
         Plants
-        </div>
+        
       </Link>
 
       <Link  onClick={scrollToTop} className="link" to="/Profile">
-        <div>Profile</div>
+       Profile
         
       </Link>
 
       <Link  onClick={scrollToTop} className="link" to="/Community">
-        <div>Community</div>
+        Community
       </Link>   
 
          <Link className="link" to="/Home" onClick={handleClick}>
-        <div>Sign Out</div>
+        Sign Out
       </Link>  
     </Menu>
   );
