@@ -7,7 +7,7 @@ import Container from '../../components/Container'
 const Login = () => {
 
   return (
-    <div style={{background:"#FFDAB9"}}>
+    <div style={{background:"#FFDAB9", width:'100%'}}>
     <NavBar />
     <Container.FULL_SCREEN>
     <Log />

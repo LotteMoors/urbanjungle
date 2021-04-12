@@ -2,18 +2,17 @@ import React from "react";
 import Head from "./Nav";
 import { connect } from "react-redux";
 import { SignedIn } from "./Sidebar/SignedIn";
-import { SignedOut } from "./Sidebar/SignedOut";
 
 function NavBar(props) {
   const { auth } = props;
   const links = auth.uid ? (
     <SignedIn pageWrapId={"outer-container"} />
   ) : (
-    <SignedOut pageWrapId={"outer-container"} />
+    null
   );
 
   return (
-    <div id="outer-container" style={{ maxHeight: "5vh"}}>
+    <div id="outer-container" style={{ height: "4.4em",width:'100%', minWidth:'5vh', position:'fixed', top:0, zIndex:2}}>
       {links}
       <Head />
     </div>

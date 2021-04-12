@@ -7,9 +7,9 @@ export const createMessage = (message) => {
             title: 'Hi',
             message:'test123'        
         }).then(() => {
-            dispatch({ type: "CREATE_MESSAGE", message });
-        }).catch((error) => {
-            dispatch({ type : "CREATE_MESSAGE_ERROR", error})
+            dispatch({ type: "CREATE_MESSAGE" });
+        }).catch((err) => {
+            dispatch({ type : "CREATE_MESSAGE_ERROR", err})
         })
         
     }

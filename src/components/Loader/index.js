@@ -3,11 +3,12 @@ import './styles.scss';
 
 const Loader = () => {
     return (
-        <div className="container">
+        <div className="contained">
+        <div className="container2">
 
         
         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-        </div>
+        </div></div>
     )
 }
 

@@ -5,7 +5,7 @@ export const Full = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   height:100%;
-  min-height:95vh;
+  min-height:100vh;
   width: 100%;
   display:flex;
   align-items:center; 

@@ -3,20 +3,23 @@ import Loader from "../../Loader";
 import "./style.scss";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
-import { Main, Card, Body, ImageBox, Content, Title, Side } from "./styles";
+import Card from '../Card'
+import {
+  Main
+} from "../styles";
 
-const Plant = () => {
+const All = () => {
   const [data, setData] = useState(null);
 
   const [page, setPage] = useState(1);
   const URL = `/api/v1/plants?token=${process.env.REACT_APP_TREFLE_TOKEN}&page=${page}`;
-  const replacer =
-    "http://www.wiu.edu/student_services/housing/residence_halls/images/furniture/no-image-available.png";
 
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
     setPage(selectedPage + 1);
-  };
+  }; 
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +34,7 @@ const Plant = () => {
       });
 
       setData(result.data.data);
+      
     };
 
     fetchData();
@@ -40,25 +44,11 @@ const Plant = () => {
     return <Loader />;
   }
   return (
-    <div style={{ margin: "0 auto", textAlign: "center", marginBottom: "4em" }}>
+    <div style={{ width:'100%', margin: "0 auto", textAlign: "center", marginBottom: "6em" }}>
+     
       <Main>
-        {data.map((item, index) => (
-          <Card key={index}>
-            <Body className="card-body">
-              <Content>
-                <Title>{item.common_name}</Title>
-                <Side>{item.family_common_name}</Side>
-              </Content>
-              <ImageBox>
-                <img
-                  style={{ height: "15em", width: "100%", maxWidth: "15em" }}
-                  src={!item.image_url || item.image_url.includes("floristic") ? replacer : item.image_url}
-                  alt=""
-                />
-              </ImageBox>
-            </Body>
-          </Card>
-        ))}
+      
+       <Card data={data} />
       </Main>
       <ReactPaginate
         previousLabel={"prev"}
@@ -77,4 +67,4 @@ const Plant = () => {
   );
 };
 
-export default Plant;
+export default All;

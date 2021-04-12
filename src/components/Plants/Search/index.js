@@ -1,71 +1,48 @@
 import React, { useState, useEffect } from "react";
-import Loader from "../../Loader";
 import axios from "axios";
-import {
-  Main,
-  Card,
-  Body,
-  ImageBox,
-  Content,
-  Title,
-  Side,
-} from "../Plant/styles";
+import { NoResults } from "./404";
+import { Main, SearchTitle } from "../styles";
+import Card from "../Card";
 
 const Search = ({ query }) => {
   const [data, setData] = useState(null);
+  const [meta, setMeta] = useState(1);
+  
 
   const URL = `/api/v1/plants/search?token=${process.env.REACT_APP_TREFLE_TOKEN}&q=${query}`;
-  const replacer =
-    "http://www.wiu.edu/student_services/housing/residence_halls/images/furniture/no-image-available.png";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(URL, {
-        method: "GET",
-        mode: "no-cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-        },
-        widthCredentials: true,
-      });
-      setData(result.data.data);
-    };
+  useEffect(
+    () => {
+      const fetchData = async () => {
+        const result = await axios(URL, {
+          method: "GET",
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+          widthCredentials: true,
+        });
+        setData(result.data.data);
+        setMeta(result.data.meta);
+      };
+      fetchData();
+    },
+    [URL]
+  );
 
-    fetchData();
-  }, [URL]);
-
-  if (!data) {
-    return <Loader />;
-  }
+ 
   return (
-    <div style={{ margin: "0 auto", textAlign: "center", marginBottom: "4em" }}>
-      <Main>
-        {console.log(data)}
-
-        {data.map((item, index) => (
-          <Card key={index}>
-            <Body className="card-body">
-              <Content>
-                <Title>{item.common_name}</Title>
-                <Side>
-                  {item.family_common_name === "Trefle family"
-                    ? null
-                    : item.family_common_name}
-                </Side>
-              </Content>
-              <ImageBox>
-                <img
-                  style={{ height: "15em", width: "100%", maxWidth: "15em" }}
-                  src={!item.image_url ? replacer : item.image_url}
-                  alt=""
-                />
-              </ImageBox>
-            </Body>
-          </Card>
-        ))}
-      </Main>
-    </div>
+    <>
+      <SearchTitle>{query}</SearchTitle>
+      {meta.total === 0 ? (
+        <NoResults />
+      ) : (
+        <Main>
+          <Card data={data} />
+        </Main>
+      )}
+    </>
   );
 };
 

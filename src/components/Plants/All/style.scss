@@ -1,0 +1,25 @@
+.pagination{
+    cursor:pointer;   
+    padding:2em 0 0 0;
+    height:3vh;
+    @media (max-width:550px){
+        width:35vh;
+        margin: 0 auto ;
+    }
+}  
+
+.pagination .active{
+    
+    background: linear-gradient(
+        328deg,
+        rgba(29, 116, 110, 1) 1%,
+        rgba(25, 167, 113, 1) 99%
+      );
+      border-radius:2px;
+      border:none;
+}
+
+.icons{
+    display:flex;
+    flex-flow:column;
+}
