@@ -9,15 +9,15 @@ export const Logo = styled.div`
   transform: translate(-50%, -50%);
   align-items: center;
   height: 100%;   
+  max-width:36vh;
 `;
 
 export const Title = styled.h1`
   font-size: 2em;
-  margin: 0 0 0 0.5em;
+  margin: 0 auto;
   color: black;
   min-width: 30vh;
   display: inline;
-  width: 100%;
   @media (max-width: 768px) {
     font-size: 1.8em;
     margin: 0;
@@ -26,7 +26,7 @@ export const Title = styled.h1`
 `;
 
 export const Img = styled.img`
-  margin: 0 auto;
+margin: 0 auto;
   width: 2.3em;
   height: 2.3em;
   @media (max-width: 350px) {

@@ -1,9 +1,6 @@
 import React from "react";
 import { Icon } from 'react-materialize'
-import { useDispatch } from "react-redux";
-import {
-  deleteLiked
-} from "../../../../store/actions/plantsActions.js";
+
 import {
   Card,
   Body,
@@ -15,19 +12,20 @@ import {
   IconBox
 } from "../../../Plants/Card/styles";
 
-const Cards = ({ item, setSelf, setMore  }) => {
+const Cards = ({ item, setSelf, setMore, handleClick  }) => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const replacer =
     "http://www.wiu.edu/student_services/housing/residence_halls/images/furniture/no-image-available.png";
 
-    const handleClick =  () => {
-       dispatch(deleteLiked(item))
-    }
+    // const handleClick =  () => {
+    //    dispatch(deleteLiked(item))
+    // }
 
     const handleSelf = () => {
       setSelf(item.self)
+      console.log(item)
       setMore(true)
       window.scrollTo(0,0)
     };
@@ -38,6 +36,7 @@ const Cards = ({ item, setSelf, setMore  }) => {
         <Body className="card-body">
           <Content>
             <CardTitle>{item.name && item.name}</CardTitle>{" "}
+            
           </Content>
           <IconBox>
             <Icon
@@ -47,7 +46,7 @@ const Cards = ({ item, setSelf, setMore  }) => {
             >
               more_horiz
             </Icon>
-            <Trash src="https://i.ibb.co/CQrq55D/trashe.png" onClick={handleClick} />
+            <Trash src="https://i.ibb.co/CQrq55D/trashe.png" onClick={()=> handleClick(item)} />
           </IconBox>
           <ImageBox>
             <Img

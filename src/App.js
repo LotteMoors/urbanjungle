@@ -30,8 +30,7 @@ function App(){
           <Route path="/Profile/Home" exact component={HomePlants} />
           </Switch>
         </Router>
-    </>
-  
+    </>  
   );
 }
 

@@ -50,17 +50,11 @@ const plantReducer = (state = initState, action) => {
       return state;
     case "DELETE_LIKED":
       console.log("Plant unlike successful");
-      return {
-        id: {
-          plantID: {
-            isLiked: false,
-            isHome: false,
-          },
-        },
-      };
+      return state;
+
     case "UNLIKE_ERROR":
       console.log("Unlike error");
-      return state;   
+      return state;
     default:
       return state;
   }

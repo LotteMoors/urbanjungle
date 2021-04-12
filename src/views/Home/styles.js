@@ -4,7 +4,7 @@ export const Full = styled.div`
   /* background: url("https://images.unsplash.com/photo-1541959833400-049d37f98ccd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
   background-size: cover;
   background-repeat: no-repeat; */
-  background-color: #c19a6b;
+  background-color: #deaa88;
   height: 100%;
   min-height: 100vh;
   width: 100%;
@@ -20,9 +20,9 @@ export const Box = styled.div`
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;
-  color:	#faebd7;
+  color:	#3d0c02;
   min-height: 75vh;
-  background: #c19a6b;
+  background: #deaa88;
   word-break: break-word;
   @media (max-width: 560px) {
     margin-top: 2em;
@@ -104,11 +104,11 @@ export const Button = styled.button`
   font-size: 2.5em;
   cursor: pointer;
   background-color: #4DAF6E;
-  color: black;
+  color: #3d0c02;
 
   border-radius: 3px;
   .link-home {
-    color: black;
+    color: #3d0c02;
   }
   &:focus {
     background-color: #6BC199;
@@ -116,7 +116,7 @@ export const Button = styled.button`
   &:hover {
     background-color: #6BC199;
     .link-home {
-      color: black;
+      color: #3d0c02;
     }
   }
   @media (max-width: 560px) {

@@ -56,10 +56,7 @@ export const addLiked = (item) => {
         authID:authID
     }, { merge: true })    
       .then(() => {
-        dispatch({ type: "ADD_TO_LIKED" }, { name: item.common_name,
-          img: item.image_url,
-          self: item.links.self,
-          id: authID});
+        dispatch({ type: "ADD_TO_LIKED" });
       })
       .catch((err) => {
         dispatch({ type: "ADD_LIKED_ERROR" }, err);
