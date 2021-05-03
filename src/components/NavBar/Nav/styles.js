@@ -14,9 +14,11 @@ export const Logo = styled.div`
 
 export const Title = styled.h1`
   font-size: 2em;
+  padding-left: 0.3em ;
   margin: 0 auto;
   color: black;
-  min-width: 30vh;
+  max-width: 25vh;
+  white-space:nowrap;
   display: inline;
   @media (max-width: 768px) {
     font-size: 1.8em;

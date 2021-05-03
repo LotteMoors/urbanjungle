@@ -26,9 +26,11 @@ const More = ({ self,  setMore }) => {
     fetchData();
   }, [URL]);
 
+ 
+
   return (
-    <div className="full" style={{ margin: "0", width:'100%' }} >
-      { data && img === true  ? (
+    <div className="full2" style={{ margin: "0", width:'100%' }} >
+      { !data ? null : img === true ? (
          <>
           <div className="main">
             <div className="img-box">
@@ -62,20 +64,14 @@ const More = ({ self,  setMore }) => {
                 </h5>
               ) : null}
 
-              {/* {!data.images.flower &&
-              !data.images.other &&
-              !data.images.fruits &&
-              !data.images.leaf &&
-              !data.images.bark &&
-              !data.images.other &&
-              !data.images.undefined ? null : (
+              {!data.images ? null : (
                 <button
                   className="img-btn waves-effect waves-dark"
-                  onClick={() => setImg(false)}
+                  onClick={()=> setImg(false)}
                 >
                   MORE IMAGES »
                 </button>
-              )} */}
+              )}
             </div>
             {data.distribution.native ? (
               <div className="native-box">
@@ -101,11 +97,9 @@ const More = ({ self,  setMore }) => {
             alt=""
           />
         </>
-      ) : img === false ? (
-        <div className="screen">
-          <Carousel setImg={setImg} data={data} />
-        </div>
-      ) : null}
+      ) :  
+      <Carousel setImg={setImg} data={data} />
+     }
     </div>
   );
 };

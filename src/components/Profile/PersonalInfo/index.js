@@ -30,6 +30,7 @@ const PersonalInfo = () => {
           location: profile.location,
           img: profile.img,
         });
+       
   }, [uid, profile]);
 
   const handleClick = () => {

@@ -10,6 +10,7 @@ const Personal = (props) => {
   const { HomePlants, LikedPlants, user, auth } = props;  
   
 
+
   return (
     <>
       <Full>
@@ -29,8 +30,8 @@ const Personal = (props) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    HomePlants: state.firestore.data.HomePlants,
-    LikedPlants: state.firestore.data.LikedPlants,
+    HomePlants: state.firestore.ordered.HomePlants,
+    LikedPlants: state.firestore.ordered.LikedPlants,
     user: state.firebase.profile
   };
 };

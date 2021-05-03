@@ -1,13 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../index.js";
+import { useSelector } from "react-redux";
 import Loader from "../../Loader";
 import Carousel from "./Carousel";
+import LikeIcon from "../Card/LikeIcon";
+import HomeIcon from "../Card/HomeIcon";
 import axios from "axios";
 import "./style.scss";
 
 const More = ({ setSelf }) => {
   const { self, img, updateImg } = useContext(Context);
   const [data, setData] = useState(null);
+  const [liked, setLiked] = useState(undefined);
+  const [home, setHome] = useState(undefined);
+  const { LikedPlants, HomePlants } = useSelector(
+    (state) => state.firestore.data
+  );
+  const { uid } = useSelector((state) => state.firebase.auth);
+  useEffect(() => {
+    data ? setLiked(LikedPlants) : setLiked(undefined);
+    data ? setHome(HomePlants) : setHome(undefined);
+  }, [LikedPlants, HomePlants, data]);
 
   const URL = `${self}?token=${process.env.REACT_APP_TREFLE_TOKEN}`;
 
@@ -58,7 +71,11 @@ const More = ({ setSelf }) => {
                 </h4>
               ) : null}
 
-              {data.edible === true ? <h5 className="edible">EDIBLE <span className="check">✓</span></h5> : null}
+              {data.edible === true ? (
+                <h5 className="edible">
+                  EDIBLE <span className="check">✓</span>
+                </h5>
+              ) : null}
               {console.log(data.images)}
 
               {!data.images.flower &&
@@ -92,13 +109,17 @@ const More = ({ setSelf }) => {
               </div>
             ) : null}
           </div>
-
+          <div className="icons">
+          <HomeIcon home={home} query={`${uid}+${data.id}`} item={data} />
+          <LikeIcon liked={liked} query={`${uid}+${data.id}`} item={data} />
+          </div>
           <img
             onClick={() => setSelf(null)}
             className="close-btn"
             src="https://i.ibb.co/4S7dQgY/close.png"
             alt=""
           />
+          
         </>
       ) : (
         <div className="screen">

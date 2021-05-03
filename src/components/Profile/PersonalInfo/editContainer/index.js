@@ -67,7 +67,7 @@ const EditContainer = ({ profile, data, setData, uid, name, setEdit }) => {
             </label>
 
             <InfoInput
-              value={data?.firstName}
+              value={data?.firstName === "First name" ? null : data.firstName }
               type="text"
               name="firstName"
               onChange={handleChange}
@@ -81,7 +81,7 @@ const EditContainer = ({ profile, data, setData, uid, name, setEdit }) => {
               Last name
             </label>
             <InfoInput
-              value={data?.lastName}
+              value={data?.lastName  === "Last name" ? null : data.lastName }
               type="text"
               name="lastName"
               onChange={handleChange}
@@ -95,7 +95,7 @@ const EditContainer = ({ profile, data, setData, uid, name, setEdit }) => {
               Location
             </label>
             <InfoInput
-              value={data?.location}
+              value={data?.location === "Location" ? null : data.location }
               type="text"
               name="location"
               onChange={handleChange}

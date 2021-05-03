@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import {  PlantBox , Button, ButtonBox} from "../styles";
 import { Icon } from 'react-materialize'
 const Plants = () => {  
+  
+ 
 
   return (
     <>    

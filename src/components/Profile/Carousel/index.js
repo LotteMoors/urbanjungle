@@ -23,15 +23,15 @@ const Carousel = ({ data ,setImg}) => {
     <div className="carousel-box">
       <Icon
         style={{ margin: "-3em 0 0em -0.5em ", z_index:'5', width: "15%", zIndex:"10", cursor:'pointer', position:'relative', left:'-0.8em', top:'-0.5em' }}
-        onClick={setImg(true)}
+        onClick={() => setImg(true)}
         medium
       >
         chevron_left
       </Icon>
       <div className="carousel">
           {console.log(data.images)}
-        {data.images.flower
-          ? data.images.flower.map((fl, index) => (
+        {data?.images.flower
+          ? data?.images.flower.map((fl, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={fl.image_url}
@@ -41,8 +41,8 @@ const Carousel = ({ data ,setImg}) => {
               </a>
             ))
           : null}
-        {data.images.fruit
-          ? data.images.fruit.map((fr, index) => (
+        {data?.images.fruit
+          ? data?.images.fruit.map((fr, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={fr.image_url}
@@ -52,8 +52,8 @@ const Carousel = ({ data ,setImg}) => {
               </a>
             ))
           : null}
-        {data.images.habit
-          ? data.images.habit.map((hb, index) => (
+        {data?.images.habit
+          ? data?.images.habit.map((hb, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={hb.image_url}
@@ -63,8 +63,8 @@ const Carousel = ({ data ,setImg}) => {
               </a>
             ))
           : null}
-        {data.images.leaf
-          ? data.images.leaf.map((lf, index) => (
+        {data?.images.leaf
+          ? data?.images.leaf.map((lf, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={lf.image_url}
@@ -74,8 +74,8 @@ const Carousel = ({ data ,setImg}) => {
               </a>
             ))
           : null}
-        {data.images.bark
-          ? data.images.bark.map((br, index) => (
+        {data?.images.bark
+          ? data?.images.bark.map((br, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={br.image_url}
@@ -85,8 +85,8 @@ const Carousel = ({ data ,setImg}) => {
               </a>
             ))
           : null}
-        {data.images.flower
-          ? data.images.flower.map((fl, index) => (
+        {data?.images.flower
+          ? data?.images.flower.map((fl, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={fl.image_url}
@@ -96,8 +96,8 @@ const Carousel = ({ data ,setImg}) => {
               </a>
             ))
           : null}
-        {data.images.other
-          ? data.images.other.map((others, index) => (
+        {data?.images.other
+          ? data?.images.other.map((others, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={others.image_url}
@@ -107,8 +107,8 @@ const Carousel = ({ data ,setImg}) => {
               </a>
             ))
           : null}
-        {data.images.undefined
-          ? data.images.undefined.map((u, index) => (
+        {data?.images.undefined
+          ? data?.images.undefined.map((u, index) => (
               <a className="carousel-item" key={index} href="#/images">
                 <img
                   src={u.image_url}

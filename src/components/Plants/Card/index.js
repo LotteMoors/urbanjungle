@@ -57,7 +57,7 @@ const Cards = ({ data }) => {
               <IconBox>
                 <Icon
                   small
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", userSelect:'none' }}
                   onClick={() => handleSelf(index)}
                 >
                   more_horiz

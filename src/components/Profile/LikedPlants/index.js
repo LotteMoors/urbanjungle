@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
@@ -28,15 +28,24 @@ const LikedPlant = ({ scrollTop }) => {
   const { LikedPlants } = useSelector((state) => state.firestore.ordered);
   const [more, setMore] = useState(false);
   const [self, setSelf] = useState("");
- 
+ const [deleted, setDeleted] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleClick = (item) => {
-    dispatch(deleteLiked(item));
+    dispatch(deleteLiked(item))
+    setDeleted(true)
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      deleted ? window.location.reload() : setDeleted(false)
+    }, 250);
+  }, [deleted]);
+ 
   
 
-  // if (!HomePlants) {
+  // if (!LikedPlants) {
   //   return <p>No plants yet</p>;
   // }
   return (
@@ -54,7 +63,7 @@ const LikedPlant = ({ scrollTop }) => {
             <Icon medium style={{ color: "#DC143C" }}>
               favorite
             </Icon>
-            <Title>Liked</Title>
+            <Title>LIKED</Title>
           </TitleBox>
           {more ? <More setMore={setMore} self={self} /> : null}
           <HomeBox>

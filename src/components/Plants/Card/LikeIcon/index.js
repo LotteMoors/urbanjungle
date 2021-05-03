@@ -15,7 +15,7 @@ const LikeIcon = ({ liked, item, query }) => {
       : dispatch(addLiked(item));   
   };
 
-  const style = liked !== undefined &&  liked[query] !== undefined && liked[query] !== null ? { color: '#DC143C', cursor: 'pointer' } : { color: "black", cursor: 'pointer' }
+  const style = liked !== undefined &&  liked[query] !== undefined && liked[query] !== null ? { color: '#DC143C', cursor: 'pointer' ,  userSelect:'none'} : { color: "black", cursor: 'pointer', userSelect:'none' }
 
 
   return (

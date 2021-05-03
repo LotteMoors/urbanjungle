@@ -1,5 +1,7 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteHome } from "../../../store/actions/plantsActions.js";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
@@ -15,18 +17,30 @@ import {
   TitleBox,
   GoBackBtn,
   Full,
-  Main
-  
+  Main,
 } from "../styles";
-import More from './More'
+import More from "./More";
 
 const HomePlant = ({ scrollTop }) => {
   const { auth } = useSelector((state) => state.firebase);
   const { HomePlants } = useSelector((state) => state.firestore.ordered);
-  const [ more, setMore ] = useState(false)
+  const [more, setMore] = useState(false);
   const [self, setSelf] = useState("");
+  const [deleted, setDeleted] = useState(false);
 
- 
+  const dispatch = useDispatch();
+
+  const handleClick = async (item) => {
+    dispatch(deleteHome(item));
+    setDeleted(true)
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      deleted ? window.location.reload() : setDeleted(false);
+    }, 250);
+  }, [deleted]);
+
   // if (!HomePlants) {
   //   return <p>No plants yet</p>;
   // }
@@ -41,20 +55,19 @@ const HomePlant = ({ scrollTop }) => {
         </Link>
         <HomeContainer>
           <TitleBox>
-             
             <Icon medium style={{ color: "#228B22" }}>
               home
             </Icon>
             <Title>HOME</Title>
           </TitleBox>
-         {more ? <More setMore={setMore} self={self}/> : null}
+          {more ? <More setMore={setMore} self={self} /> : null}
           <HomeBox>
-            
             {!HomePlants || HomePlants === null || HomePlants === undefined
               ? null
               : HomePlants.map((item, index) => {
                   return item.authID === auth.uid ? (
                     <Cards
+                      handleClick={handleClick}
                       key={index}
                       HomePlants={HomePlants}
                       query={`${auth.uid}+${item.id}`}
@@ -76,7 +89,7 @@ const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
     HomePlants: state.firestore.data.HomePlants,
-    user: state.firebase.profile
+    user: state.firebase.profile,
   };
 };
 
@@ -85,6 +98,6 @@ export default compose(
   firestoreConnect([
     {
       collection: "HomePlants",
-    }
+    },
   ])
 )(HomePlant);

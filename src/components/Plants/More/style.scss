@@ -117,6 +117,17 @@ i {
   }
 }
 
+.icons{
+  min-width:8vh;  
+  z-index:5;
+  position:absolute; 
+  right:8vh;
+  display:flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+
+
 .carousel {
   min-width: 45vh !important;
   min-height: 35vh !important;
@@ -182,9 +193,12 @@ i {
 
 .close-btn {
   position: relative;
-  top: 0;
+  margin-top:0.4em;
   right: 0em;
+  z-index:6;
   cursor: pointer;
-  height: 3vh;
-  width: 3vh;
+  max-height: 20px;
+  min-height: 19px;
+  max-width: 20px;
+  min-width: 19px;
 }

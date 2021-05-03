@@ -26,8 +26,8 @@
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 35px;
-  width: 35px;
+  height: 24px;
+  width: 24px;
   margin-right: 3vh;
 }
 
@@ -110,6 +110,7 @@
   color: white;
   min-width: 10vh;
   max-width: 20vh;
+  user-select: none;
   &::after {
     content: "";
     position: absolute;

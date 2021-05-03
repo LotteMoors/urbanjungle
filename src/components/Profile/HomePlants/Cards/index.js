@@ -1,7 +1,5 @@
 import React from "react";
 import { Icon } from "react-materialize";
-import { useDispatch } from "react-redux";
-import { deleteHome } from "../../../../store/actions/plantsActions.js";
 import {
   Card,
   Body,
@@ -13,8 +11,8 @@ import {
   Trash,
 } from "../../../Plants/Card/styles";
 
-const Cards = ({ item, setSelf, setMore  }) => {
-  const dispatch = useDispatch();
+const Cards = ({ item, setSelf, setMore , handleClick }) => {
+  
   const replacer =
     "http://www.wiu.edu/student_services/housing/residence_halls/images/furniture/no-image-available.png";
 
@@ -24,9 +22,7 @@ const Cards = ({ item, setSelf, setMore  }) => {
     window.scrollTo(0,0)
   };
 
-  const handleClick = async () => {
-    dispatch(deleteHome(item));
-  };
+ 
 
   return (
     <>
@@ -45,7 +41,7 @@ const Cards = ({ item, setSelf, setMore  }) => {
             </Icon>
             <Trash
               src="https://i.ibb.co/CQrq55D/trashe.png"
-              onClick={handleClick}
+              onClick={() => handleClick(item)}
             />
           </IconBox>
           <ImageBox>
